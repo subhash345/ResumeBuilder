@@ -1,0 +1,102 @@
+################################################################################
+# KNOWLEDGE BANK — [YOUR FULL NAME]
+# Targeting: [Your Target Roles, e.g. Sysadmin, IT Infrastructure, Cloud, IT Specialist]
+# Experience: [X]+ years ([Start Month YYYY] – Present)
+#
+# HOW TO USE THIS FILE:
+# Fill in every section below with YOUR real information.
+# Be specific — the more detail you add (tools, numbers, outcomes),
+# the better Claude can tailor your resume to each job description.
+# Replace every line that starts with [ ] with your real content.
+################################################################################
+
+NAME: [Your Full Name]
+LOCATION: [City, Province/State]
+PHONE: [000-000-0000]
+EMAIL: [your@email.com]
+LINKEDIN: [linkedin.com/in/yourhandle]
+
+EDUCATION:
+[Your Degree] — [Your School], [City, Province/State] ([Start Year]–[End Year])
+
+CERTIFICATIONS:
+[Cert 1], [Cert 2], [Cert 3], [Cert 4]
+# Examples: AWS SAA-C03, AZ-104, CCNA, CompTIA A+, PMP, CISSP, etc.
+
+TECH STACK:
+# List every tool, platform, and technology you are comfortable with.
+# Group them logically so Claude can pick the right ones per job.
+
+Cloud: [e.g. AWS (EC2, S3, IAM, CloudWatch), Azure (VMs, Intune, Entra ID), GCP]
+OS: [e.g. Windows Server 2019/2022, Ubuntu, CentOS, macOS]
+Networking: [e.g. pfSense, Cisco IOS, VLANs, WireGuard, TCP/IP, DNS, DHCP]
+Virtualization: [e.g. VMware vSphere/ESXi, Hyper-V, Proxmox, Docker, Kubernetes]
+Identity: [e.g. Active Directory, Azure AD, GPO, Intune MDM, RBAC, SSO]
+Security: [e.g. MFA, IAM, firewall rules, patch management, endpoint protection]
+Monitoring: [e.g. Zabbix, CloudWatch, Grafana, Prometheus, Nagios, SNMP]
+Backup/DR: [e.g. Veeam, Azure Backup, AWS S3, snapshot management]
+Automation: [e.g. PowerShell, Bash, Python, Terraform, Ansible]
+Remote Access: [e.g. RDP, SSH, VPN, TeamViewer, MeshCentral]
+ITSM: [e.g. ServiceNow, Jira, Freshdesk, SLA management]
+Other: [Any other tools relevant to your field]
+
+WORK EXPERIENCE:
+
+ROLE 1: [Your Job Title] — [Company Name], [City, Province/State]
+[Start Month YYYY] – Present ([Work Mode: Remote / Hybrid / On-site])
+# List 8-12 bullet points. Be specific: what did you do, with what tool, and what was the result?
+- [Duty/achievement with a tool or technology and a measurable outcome]
+- [Duty/achievement with a tool or technology and a measurable outcome]
+- [Duty/achievement with a tool or technology and a measurable outcome]
+- [Duty/achievement with a tool or technology and a measurable outcome]
+- [Duty/achievement with a tool or technology and a measurable outcome]
+- [Duty/achievement with a tool or technology and a measurable outcome]
+- [Duty/achievement with a tool or technology and a measurable outcome]
+- [Duty/achievement with a tool or technology and a measurable outcome]
+
+ROLE 2: [Your Job Title] — [Company Name], [City, Province/State]
+[Start Month YYYY] – [End Month YYYY] ([Work Mode])
+- [Duty/achievement with a tool or technology and a measurable outcome]
+- [Duty/achievement with a tool or technology and a measurable outcome]
+- [Duty/achievement with a tool or technology and a measurable outcome]
+- [Duty/achievement with a tool or technology and a measurable outcome]
+- [Duty/achievement with a tool or technology and a measurable outcome]
+- [Duty/achievement with a tool or technology and a measurable outcome]
+
+ROLE 3: [Your Job Title] — [Company Name], [City, Province/State]
+[Start Month YYYY] – [End Month YYYY] ([Work Mode])
+- [Duty/achievement with a tool or technology and a measurable outcome]
+- [Duty/achievement with a tool or technology and a measurable outcome]
+- [Duty/achievement with a tool or technology and a measurable outcome]
+- [Duty/achievement with a tool or technology and a measurable outcome]
+
+PROJECTS:
+# List 2-4 personal or professional projects. These are very powerful for ATS scoring.
+# Include what you built, what tools you used, and a real metric if possible.
+
+PROJECT 1: [Project Name]
+- [What it is and what technology stack you used]
+- [A feature or outcome with a specific detail or number]
+- [Another feature, metric, or business value]
+
+PROJECT 2: [Project Name]
+- [What it is and what technology stack you used]
+- [A feature or outcome with a specific detail or number]
+- [Another feature, metric, or business value]
+
+PROJECT 3: [Project Name] (optional)
+- [What it is and what technology stack you used]
+- [A feature or outcome with a specific detail or number]
+
+PROJECT 4: [Project Name] (optional)
+- [What it is and what technology stack you used]
+- [A feature or outcome with a specific detail or number]
+
+POSITIONING NOTES:
+# Write 3-5 notes to guide Claude on how to position you for different roles.
+# Example:
+# - Not a junior. X years, Y companies, degree, Z certs.
+# - For sysadmin roles: lead with Windows Server, AD, patch management.
+# - For cloud roles: lead with AWS, Azure, infrastructure as code.
+# - [Your own positioning note]
+# - [Your own positioning note]
