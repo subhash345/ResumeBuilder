@@ -1,0 +1,199 @@
+# How to Build Your Own AI Resume Bot on Telegram
+
+This bot takes a job description you paste into Telegram and automatically generates a tailored, ATS-optimized resume PDF — plus gives it an ATS score. Here is how to set it up yourself from scratch.
+
+---
+
+## What You Will Need
+
+- A computer running Windows, Mac, or Linux
+- Python 3.10 or newer installed ([download here](https://www.python.org/downloads/))
+- A Telegram account ([telegram.org](https://telegram.org))
+- An Anthropic account ([console.anthropic.com](https://console.anthropic.com))
+- About 20-30 minutes
+
+---
+
+## Step 1 — Get Your Telegram Bot Token
+
+1. Open Telegram and search for **@BotFather**.
+2. Start a chat and send the message: `/newbot`
+3. Follow the prompts — give your bot a name and a username (username must end in `bot`, e.g. `myresumebot`).
+4. BotFather will reply with a **token** that looks like: `1234567890:AAHe4b-V7T5nfEhXarc1B...`
+5. Copy that token — you will need it in Step 4.
+
+---
+
+## Step 2 — Get Your Anthropic API Key
+
+1. Go to [console.anthropic.com](https://console.anthropic.com) and sign in (or create a free account).
+2. Click **API Keys** in the left sidebar.
+3. Click **Create Key**, give it a name (e.g. `resume-bot`), and copy the key.
+4. Note: you will need to add billing (even a small amount like $5) to use the API. Each resume generation costs roughly $0.01–0.03.
+
+---
+
+## Step 3 — Download and Set Up the Project Files
+
+1. Create a new folder on your computer, e.g. `resume-bot`.
+2. Place all of these files inside that folder:
+   - `bot.py`
+   - `prompts.py`
+   - `knowledge_bank.txt`
+   - `.env.example`
+   - `requirements.txt`
+
+3. Rename `.env.example` to `.env` (remove the `.example` part).
+
+---
+
+## Step 4 — Fill In Your .env File
+
+Open the `.env` file in any text editor (Notepad, VS Code, etc.) and replace the placeholder values:
+
+```
+TELEGRAM_TOKEN=paste-your-telegram-token-here
+ANTHROPIC_API_KEY=paste-your-anthropic-key-here
+CLAUDE_MODEL=claude-sonnet-4-5
+OUTPUT_DIR=out
+KNOWLEDGE_BANK=knowledge_bank.txt
+```
+
+Save the file. Do **not** add quotes around the values.
+
+---
+
+## Step 5 — Fill In Your Knowledge Bank
+
+Open `knowledge_bank.txt` in a text editor. This is the most important step — it is the source of truth Claude uses to write your resume.
+
+Replace every `[placeholder]` with your real information:
+
+- Your name, contact info, LinkedIn URL
+- Your education and certifications
+- Every tool and technology you know (be thorough — list everything)
+- Your work history with specific achievements and numbers
+- 2-4 personal or professional projects with real metrics
+
+**Tips for writing good bullets in your knowledge bank:**
+- Bad: `Managed servers`
+- Good: `Managed 12 Windows Server 2022 VMs on VMware ESXi, maintaining 99.9% uptime across all services`
+
+The more specific you are, the better the resume output.
+
+---
+
+## Step 6 — Customize bot.py With Your Personal Info
+
+Open `bot.py` and find the section under `# ── UPDATE THESE STATIC VALUES TO MATCH YOUR INFO`. Replace the placeholder strings with your real name, email, phone, LinkedIn URL, company names, job titles, and dates.
+
+Also update the `build_resume_text()` function at the top of the file — find the variables `CANDIDATE_HEADER`, `COMPANY_1`, `COMPANY_2`, `COMPANY_3`, `EDUCATION_LINE`, and `CERTS_LINE` and fill them in.
+
+---
+
+## Step 7 — Install Python Dependencies
+
+Open a terminal (Command Prompt on Windows, Terminal on Mac/Linux), navigate to your project folder, and run:
+
+```bash
+pip install -r requirements.txt
+```
+
+On some systems you may need to use `pip3` instead of `pip`.
+
+**WeasyPrint extra step (if you get an error):**
+
+WeasyPrint requires some system libraries for PDF rendering.
+
+- **Windows:** Follow the [WeasyPrint Windows install guide](https://doc.courtbouillon.org/weasyprint/stable/first_steps.html#windows)
+- **Mac:** Run `brew install pango libffi`
+- **Linux (Ubuntu/Debian):** Run `sudo apt-get install python3-cffi libpango-1.0-0 libpangoft2-1.0-0`
+
+---
+
+## Step 8 — Run the Bot
+
+In your terminal, inside the project folder, run:
+
+```bash
+python bot.py
+```
+
+You should see: `Resume Bot started — paste a JD to begin.`
+
+---
+
+## Step 9 — Use the Bot
+
+1. Open Telegram and search for your bot by its username (e.g. `@myresumebot`).
+2. Start a chat with it.
+3. Paste any job description directly into the chat and hit Send.
+4. Wait 20-30 seconds.
+5. The bot will send back:
+   - A PDF of your tailored, one-page resume
+   - An ATS score (0-100) with a keyword match breakdown
+
+---
+
+## Keeping the Bot Running
+
+When you close the terminal, the bot stops. To keep it running permanently:
+
+- **Linux/Mac (background process):** `nohup python bot.py &`
+- **Linux (as a service):** Set it up with `systemd` (search: "run python script as systemd service")
+- **Windows (background):** Use Task Scheduler or run it in a virtual machine/VPS
+
+A cheap cloud server (e.g. DigitalOcean $4/month, AWS Lightsail, Oracle Free Tier) works great for running the bot 24/7.
+
+---
+
+## File Overview
+
+| File | What It Does |
+|---|---|
+| `bot.py` | Main bot code — handles Telegram messages, calls Claude, renders the PDF |
+| `prompts.py` | The AI instructions that tell Claude how to write your resume |
+| `knowledge_bank.txt` | YOUR background — fill this in with your real info |
+| `.env` | Your secret API keys — never share this file |
+| `requirements.txt` | Python packages to install |
+
+---
+
+## Common Errors
+
+**`FileNotFoundError: knowledge_bank.txt not found`**
+Make sure `knowledge_bank.txt` is in the same folder as `bot.py`.
+
+**`KeyError: TELEGRAM_TOKEN`**
+Your `.env` file is missing or not named exactly `.env`. Check the filename (on Windows, make sure it is not `.env.txt`).
+
+**WeasyPrint PDF errors**
+Make sure you installed the system libraries in Step 7.
+
+**`anthropic.AuthenticationError`**
+Your Anthropic API key is wrong or expired. Double-check it in `.env`.
+
+---
+
+## Customizing the AI Prompts
+
+The file `prompts.py` controls exactly how Claude writes your resume. You can edit the prompts to:
+
+- Change the field (e.g. swap "IT Infrastructure" for "Software Engineering" or "Marketing")
+- Adjust the bullet word count
+- Change the summary formula
+- Add or remove scoring criteria
+
+The prompts are plain English — just read them and change what you want.
+
+---
+
+## Privacy Note
+
+- Your knowledge bank and job descriptions are sent to Anthropic's API for processing. Review [Anthropic's privacy policy](https://www.anthropic.com/privacy) if this concerns you.
+- Your `.env` file contains secret API keys. Never upload it to GitHub or share it publicly.
+- Add `.env` to your `.gitignore` file if you use Git.
+
+---
+
+That's it. Good luck with the job search!
